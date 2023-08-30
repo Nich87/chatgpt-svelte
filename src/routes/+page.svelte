@@ -37,7 +37,8 @@
       on:submit|preventDefault={handleSubmit}
       class="flex w-full rounded-md gap-4 bg-black bg-opacity-20 p-2"
     >
-      <Textarea type="text" bind:value={query} class="w-full" rows="1" />
+      <label for="chat" class="sr-only">Your message</label>
+      <Textarea type="text" id="chat" bind:value={query} class="w-full" rows="1" />
       <ToolbarButton
         type="submit"
         color="blue"
