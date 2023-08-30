@@ -19,7 +19,7 @@
   onMount(() => {
     chatHistorySubscription.set($chatHistory);
     chatHistorySubscription.subscribe((value: any) => {
-      if (value === null) console.log('chat history is null');
+      if (value === null) return console.log('chat history is null');
       chatHistoryKeys = Object.keys(value);
     });
   });
