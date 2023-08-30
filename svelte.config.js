@@ -1,6 +1,6 @@
-import preprocess from "svelte-preprocess";
+import preprocess from 'svelte-preprocess';
 import { vitePreprocess } from '@sveltejs/kit/vite';
-import {markdown} from 'svelte-preprocess-markdown';
+import { markdown } from 'svelte-preprocess-markdown';
 
 import adapterNode from '@sveltejs/adapter-node';
 import adapterStatic from '@sveltejs/adapter-static';
@@ -10,17 +10,19 @@ import adapterCloudflare from '@sveltejs/adapter-cloudflare';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
-  	preprocess: [vitePreprocess(), preprocess({
-        postcss: true
+  preprocess: [
+    vitePreprocess(),
+    preprocess({
+      postcss: true
     }),
-		markdown()
-	],
+    markdown()
+  ],
   kit: {
     adapter: getAdapter({
-		 runtime: 'nodejs18.x'
-	}),
-    csp: { mode: 'auto' },
-  },
+      runtime: 'nodejs18.x'
+    }),
+    csp: { mode: 'auto' }
+  }
 };
 
 function getAdapter() {
@@ -36,7 +38,7 @@ function getAdapter() {
       : adapterStatic({
           pages: 'build',
           assets: 'build',
-          fallback: null,
+          fallback: null
         });
   }
 }
