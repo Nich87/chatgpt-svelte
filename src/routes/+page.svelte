@@ -1,7 +1,8 @@
 <script lang="ts">
+  import { Textarea, ToolbarButton } from 'flowbite-svelte';
+  import { Icon } from 'flowbite-svelte-icons';
   import ChatHistory from '$lib/components/ChatHistory.svelte';
   import ChatMessage from '$lib/components/ChatMessage.svelte';
-  import Input from '$lib/components/Input.svelte';
   import { chatMessages, answer } from '$lib/stores/chat-messages';
 
   let query = '';
@@ -33,16 +34,18 @@
       </div>
     </div>
     <form
-      class="flex w-full rounded-md gap-4 bg-black bg-opacity-20 p-2"
       on:submit|preventDefault={handleSubmit}
+      class="flex w-full rounded-md gap-4 bg-black bg-opacity-20 p-2"
     >
-      <Input type="text" bind:value={query} class="w-full" />
-      <button
+      <Textarea type="text" bind:value={query} class="w-full" rows="1" />
+      <ToolbarButton
         type="submit"
-        class="bg-black bg-opacity-40 hover:bg-white/5 px-8 py-1.5 border border-black/40 ml-[-0.5rem] rounded-md text-teal-300"
+        color="blue"
+        class="rounded-full text-primary-600 dark:text-primary-500"
       >
-        Send
-      </button>
+        <Icon name="papper-plane-outline" class="w-5 h-5 rotate-45" />
+        <span class="sr-only">Send message</span>
+      </ToolbarButton>
     </form>
   </div>
 </section>
